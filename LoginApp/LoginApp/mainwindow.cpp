@@ -10,11 +10,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Setup image
-    QPixmap image("C:/Users/Mitinz/Desktop/download.jpg");
+    // Setup image - with relative resource path
+    QPixmap image(":/resources/images/login.jpg");
     // Scale to be w/h of the label
-    auto imgWidth = ui->label_image->width();
-    auto imgHeight = ui->label_image->height();
+    auto imgWidth {ui->label_image->width()};
+    auto imgHeight {ui->label_image->height()};
     ui->label_image->setPixmap(image.scaled(imgWidth,imgHeight, Qt::KeepAspectRatio));
 
     // Add widgets (created originally in the UI) to the status bar
@@ -34,20 +34,20 @@ void MainWindow::on_pushButton_login_clicked()
     QString pass {ui->lineEdit_password->text()};
 
     if(user == "atlas" && pass == "fontaine"){
-        // Display modal to the user
-//        QMessageBox::information(this, "Login Successful", "Hello " + user + ", Welcome back");
-//        this->hide();
-//        uProf = new UserProfile(this);
-//        uProf->show();
-
         // Display small message in the status bar instead
         ui->statusBar->showMessage("Login Successful",  // Message
                                    5000);               // Timeout till clear
-    }else{
-        // Display modal to the user
-//        QMessageBox::warning(this, "Credentials Invalid", "No matching username and password");
 
+        // Display modal to the user
+        QMessageBox::information(this, "Login Successful", "Hello " + user + ", Welcome back");
+        this->hide();
+        uProf = new UserProfile(this);
+        uProf->show();
+    }else{
         // Display small message in the status bar instead
         ui->statusBar->showMessage("Credentials Invalid");
+
+        // Display modal to the user
+        QMessageBox::warning(this, "Credentials Invalid", "No matching username and password");
     }
 }
