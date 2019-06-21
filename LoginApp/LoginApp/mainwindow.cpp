@@ -1,12 +1,21 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QPixmap>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // Setup image
+    QPixmap image("C:/Users/Mitinz/Desktop/download.jpg");
+    // Scale to be w/h of the label
+    auto imgWidth = ui->label_image->width();
+    auto imgHeight = ui->label_image->height();
+    ui->label_image->setPixmap(image.scaled(imgWidth,imgHeight, Qt::KeepAspectRatio));
 }
 
 MainWindow::~MainWindow()
