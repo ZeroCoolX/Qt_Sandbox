@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/g3.PNG</file>
+    </qresource>
+</RCC>
