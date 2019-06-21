@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>img/hpSupply.png</file>
+        <file>img/missileHSupply.png</file>
+        <file>img/missileSupply.png</file>
+    </qresource>
+</RCC>

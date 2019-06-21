@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>701</width>
+    <height>431</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>701</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionHealth"/>
+    <addaction name="actionMissile"/>
+    <addaction name="actionHMissile"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionHealth"/>
+   <addaction name="actionMissile"/>
+   <addaction name="actionHMissile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionHealth">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/img/hpSupply.png</normaloff>:/res/img/hpSupply.png</iconset>
+   </property>
+   <property name="text">
+    <string>Health</string>
+   </property>
+  </action>
+  <action name="actionMissile">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/img/missileSupply.png</normaloff>:/res/img/missileSupply.png</iconset>
+   </property>
+   <property name="text">
+    <string>Missile</string>
+   </property>
+  </action>
+  <action name="actionHMissile">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/res/img/missileHSupply.png</normaloff>:/res/img/missileHSupply.png</iconset>
+   </property>
+   <property name="text">
+    <string>H. Missile</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
