@@ -16,6 +16,13 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="text">
+       <string>Open .exe</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QComboBox" name="comboBox"/>

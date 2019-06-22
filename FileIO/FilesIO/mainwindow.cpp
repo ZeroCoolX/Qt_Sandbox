@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QFileDialog>
+#include <QDesktopServices>
+#include <QUrl>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -83,4 +85,19 @@ void MainWindow::on_pushButton_2_clicked()
     ui->plainTextEdit->setPlainText(text);
 
     file.close();
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    QString searchFilter {"All File (*.*) ;; Vader File (*.vader) ;; Cpp File (*.cpp)"};
+    QString fileName = QFileDialog::getOpenFileName(this,               // Parent
+                                                    "Open a file",      // Message
+                                                    QDir::homePath(),   // Base dir
+                                                    searchFilter);      // Filter dropdown
+
+    QDesktopServices::openUrl(
+                QUrl(
+                    "file:///"+fileName,    // path to .exe
+                    QUrl::TolerantMode)     // tells it to not care what file sys (win, unix...etc)
+                );
 }
