@@ -2,22 +2,14 @@
 #include "ui_mainwindow.h"
 #include <QDir>
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    QDir dir("C:\\Users\\Mitinz\\Documents\\development\\Qt_udemy\\FileIO\\FilesIO\\randocalrisian");
-//    if(dir.exists()){
-//        QMessageBox::information(this,
-//                                 "Directory status",
-//                                 "Directory exists!");
-//    }else{
-//        QMessageBox::warning(this,
-//                                 "Directory status",
-//                                 "Directory does not exist!");
-//    }
 
     QDir dir;
     foreach(auto d, dir.drives()){
@@ -49,4 +41,39 @@ void MainWindow::on_pushButton_clicked()
                                  "Exists",
                                  "Dir exists");
     }
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    QFile file("C:\\Users\\Mitinz\\Documents\\development\\Qt_udemy\\FileIO\\FilesIO\\darth.vader");
+    if(!file.open(QFile::WriteOnly | QFile::Text)){
+        QMessageBox::warning(this,
+                             "Warning",
+                             "Coult not open file darth.vader");
+        return;
+    }
+
+    QTextStream fout(&file);
+    QString text {ui->plainTextEdit->toPlainText()};
+    fout << text;
+    file.flush();
+
+    file.close();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    QFile file("C:\\Users\\Mitinz\\Documents\\development\\Qt_udemy\\FileIO\\FilesIO\\darth.vader");
+    if(!file.open(QFile::ReadOnly | QFile::Text)){
+        QMessageBox::warning(this,
+                             "Warning",
+                             "Coult not open file darth.vader");
+        return;
+    }
+
+    QTextStream fin(&file);
+    QString text {fin.readAll()};
+    ui->plainTextEdit->setPlainText(text);
+
+    file.close();
 }
