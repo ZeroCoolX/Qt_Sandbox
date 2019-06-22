@@ -4,6 +4,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -63,11 +64,17 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QFile file("C:\\Users\\Mitinz\\Documents\\development\\Qt_udemy\\FileIO\\FilesIO\\darth.vader");
+    QString searchFilter {"All File (*.*) ;; Vader File (*.vader) ;; Cpp File (*.cpp)"};
+    QString fileName = QFileDialog::getOpenFileName(this,               // Parent
+                                                    "Open a file",      // Message
+                                                    QDir::homePath(),   // Base dir
+                                                    searchFilter);      // Filter dropdown
+
+    QFile file(fileName);
     if(!file.open(QFile::ReadOnly | QFile::Text)){
         QMessageBox::warning(this,
                              "Warning",
-                             "Coult not open file darth.vader");
+                             "Coult not open file " + fileName);
         return;
     }
 
